@@ -1,0 +1,36 @@
+buildscript {
+    ext.kotlin_version = '1.5.0'
+    repositories {
+        mavenCentral()
+//        maven { aurl 'https://google.bintray.com/tensorflow'}
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+apply plugin: 'kotlin'
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml','javafx.graphics']
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'no.tornado:tornadofx:1.7.20'
+    //compile group: 'org.tensorflow', name: 'tensorflow-core-platform', version: '0.3.1'
+}
+compileKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+group 'com.almaviva'
+version '1.0-SNAPSHOT'
+mainClassName = "MyAppKt"
